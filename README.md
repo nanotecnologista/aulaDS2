@@ -1,0 +1,1 @@
+# Repositorio de testes consumindo a API https://jsonplaceholder.typicode.com/
