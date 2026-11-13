@@ -8,8 +8,8 @@ describe('JSONPlaceholder API - Teste dos Gets de posts', () => {
       })
   })
 
-  it('Listagem de um post específico', () => {
-    cy.request('GET', 'https://jsonplaceholder.typicode.com/posts/1')
+  it.only('Listagem de um post específico', () => {
+    cy.request('GET', '/posts/1')
       .then((response) => {
         expect(response.status).to.eq(200)
         expect(response.body).to.have.property('id', 1)
@@ -24,7 +24,7 @@ describe('JSONPlaceholder API - Teste dos Gets de posts', () => {
   it('Lista id que não existe', () => {
     cy.request({
       method: 'GET',
-      url: 'https://jsonplaceholder.typicode.com/posts/101',
+      url: '/posts/101',
       failOnStatusCode: false
     }).then((response) => {
       expect(response.status).to.eq(404)
