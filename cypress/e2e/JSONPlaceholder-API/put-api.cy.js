@@ -1,6 +1,6 @@
 
 
-describe('JSONPlaceholder API - Teste de Atualização de posts', () => {
+describe('JSONPlaceholder API - Teste de Atualização de posts teste', () => {
   it( 'Atualização de um post', () => {
     cy.request('PUT', 'https://jsonplaceholder.typicode.com/posts/1', {
         id:1,
