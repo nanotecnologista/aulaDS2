@@ -1,10 +1,8 @@
-// delete de posts
-
-describe('JSONPlaceholder API - Teste de deleção de posts', () => {
-    it('Deleção de um post', () => {
+describe('JSONPlaceholder API - Teste de deleção de comments', () => {
+    it('Deleção de um comment', () => {
         cy.request({
             method: 'DELETE',
-            url: '/posts/100'
+            url: '/comments/100'
         })
             .then((response) => {
                 cy.log("response:", JSON.stringify(response.status))
@@ -14,10 +12,10 @@ describe('JSONPlaceholder API - Teste de deleção de posts', () => {
             })
     })
 
-    it('Deleção de um post que não existe', () => {
+    it('Deleção de um comment que não existe', () => {
         cy.request({
             method: 'DELETE',
-            url: '/posts/101'
+            url: '/comments/101'
         })
             .then((response) => {
                 cy.log("response:", JSON.stringify(response.status))

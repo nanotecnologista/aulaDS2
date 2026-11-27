@@ -1,21 +1,21 @@
 
-describe('JSONPlaceholder API - Teste dos Gets de posts', () => {
+describe('JSONPlaceholder API - Teste dos Gets de comments', () => {
   it('Listagem de todos os posts', () => {
-    cy.request('GET', 'https://jsonplaceholder.typicode.com/posts')
+    cy.request('GET', 'https://jsonplaceholder.typicode.com/comments')
       .then((response) => {
         expect(response.status).to.eq(200)
         expect(response.body).to.have.length(100)
       })
   })
 
-  it.only('Listagem de um post específico', () => {
-    cy.request('GET', '/posts/1')
+  it.only('Listagem de um comment em específico', () => {
+    cy.request('GET', '/comments/1')
       .then((response) => {
         expect(response.status).to.eq(200)
         expect(response.body).to.have.property('id', 1)
-        expect(response.body).to.have.property('title')
-        expect(response.body).to.have.property('title',
-          "sunt aut facere repellat provident occaecati excepturi optio reprehenderit"
+        expect(response.body).to.have.property('name')
+        expect(response.body).to.have.property('name',
+          "id labore ex et quam laborum"
         )
         expect(response.body).to.have.property('body')
       })
@@ -24,7 +24,7 @@ describe('JSONPlaceholder API - Teste dos Gets de posts', () => {
   it('Lista id que não existe', () => {
     cy.request({
       method: 'GET',
-      url: '/posts/101',
+      url: '/comments/101',
       failOnStatusCode: false
     }).then((response) => {
       expect(response.status).to.eq(404)
@@ -33,7 +33,7 @@ describe('JSONPlaceholder API - Teste dos Gets de posts', () => {
 
   it.only('Simulação de erro 500 com mock via browser fetch', () => {
     // 1. Configura a interceptação e cria um alias
-    cy.intercept('GET', 'https://jsonplaceholder.typicode.com/posts/1', {
+    cy.intercept('GET', 'https://jsonplaceholder.typicode.com/comments/1', {
       statusCode: 500,
       body: {
         error: 'Erro interno do servidor'
@@ -42,7 +42,7 @@ describe('JSONPlaceholder API - Teste dos Gets de posts', () => {
 
     // 2. Dispara a requisição a partir do próprio navegador
     cy.window().then((win) => {
-      win.fetch('https://jsonplaceholder.typicode.com/posts/1')
+      win.fetch('https://jsonplaceholder.typicode.com/comments/1')
     })
 
     // 3. Aguarda a requisição interceptada e valida a resposta mockada
