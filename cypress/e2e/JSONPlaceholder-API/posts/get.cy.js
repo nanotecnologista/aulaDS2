@@ -8,7 +8,7 @@ describe('JSONPlaceholder API - Teste dos Gets de posts', () => {
       })
   })
 
-  it.only('Listagem de um post específico', () => {
+  it('Listagem de um post específico', () => {
     cy.request('GET', '/posts/1')
       .then((response) => {
         expect(response.status).to.eq(200)
@@ -31,7 +31,7 @@ describe('JSONPlaceholder API - Teste dos Gets de posts', () => {
     })
   })
 
-  it.only('Simulação de erro 500 com mock via browser fetch', () => {
+  it('Simulação de erro 500 com mock via browser fetch', () => {
     // 1. Configura a interceptação e cria um alias
     cy.intercept('GET', 'https://jsonplaceholder.typicode.com/posts/1', {
       statusCode: 500,
